@@ -148,4 +148,4 @@ All settings live in `src/main/resources/application-dev.properties`. Highlights
 | 2 | Webhooks (idempotent, out-of-order safe), reconciliation, advisory locks | ✅ Done |
 | 3 | Domain events via transactional **outbox** → **Kafka** | ✅ Done |
 | 4 | **Resilience4j** circuit breaker + rate limiting, `X-Correlation-Id`, Micrometer metrics | ✅ Done |
-| 5 | **Flyway** migrations, **Testcontainers** integration + concurrency tests, docker-compose | ⏳ Planned |
+| 5 | **Flyway** migrations, **Testcontainers** integration + concurrency tests, docker-compose | ✅ Done |
