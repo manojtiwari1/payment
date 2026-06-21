@@ -1,0 +1,78 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.1.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// ================= SPRING BOOT =================
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// ================= LOMBOK =================
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// ================= JACKSON (DATE TIME) =================
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+
+	// ================= JWT =================
+	implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
+
+
+	// ================= REDIS =================
+	implementation 'redis.clients:jedis:7.4.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// ================= KAFKA (domain events via transactional outbox) =================
+	implementation 'org.springframework.kafka:spring-kafka'
+
+	// ================= RESILIENCE4J (programmatic — circuit breaker + rate limiter) =================
+	implementation 'io.github.resilience4j:resilience4j-circuitbreaker:2.3.0'
+	implementation 'io.github.resilience4j:resilience4j-ratelimiter:2.3.0'
+	implementation 'io.github.resilience4j:resilience4j-core:2.3.0'
+
+	// ================= MAPSTRUCT =================
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+
+	// ================= Actuator =================
+	implementation("org.springframework.boot:spring-boot-starter-actuator:4.1.0-M4")
+
+	// ================= TEST =================
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'com.h2database:h2'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
